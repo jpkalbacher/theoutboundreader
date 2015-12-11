@@ -1,1 +1,9 @@
 <h1> ALL THE ARTICLES </h1>
+
+<% Article.all.each do |article| %>
+  <p>
+    <h4><a href="<%= article.url %>"><%= article.title %></a><h4>
+    <h6><%= article.author %><h6>
+    <h6><%= article.published %><h6>
+  </p>
+<% end %>
