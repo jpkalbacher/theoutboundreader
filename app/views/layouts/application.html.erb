@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>The Outbound Reader</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <% if current_user %>
+    <header class="navbar">
+      <p>Welcome back <%= current_user.email %>!</p>
+      <%= button_to "delete", {:controller => :sessions, :action => 'destroy'},
+          :method => :delete %>
+    </header>
+  <% end %>
+
+  <%= yield %>
+  <%= flash[:errors].join(", ") if flash[:errors] %>
+
+</body>
+</html>
