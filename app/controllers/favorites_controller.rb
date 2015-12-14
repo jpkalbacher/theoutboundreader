@@ -7,6 +7,11 @@ class FavoritesController < ApplicationController
     redirect_to articles_path
   end
 
+  def index
+    debugger;
+    @articles = current_user.favorite_articles
+  end
+
   def destroy
     favorite = current_user.favorites.where(article_id: favorite_params[:article_id]).first
     favorite.delete
