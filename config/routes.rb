@@ -1,12 +1,8 @@
 Rails.application.routes.draw do
-
-  get 'favorites/create'
-
-  get 'favorites/destroy'
-
   root to: 'articles#index'
 
   resources :users, only: [:new, :create]
   resource :session, only: [:new, :create, :destroy]
   resources :articles, only: [:index]
+  resources :favorites, only: [:create, :destroy]
 end

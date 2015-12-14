@@ -7,9 +7,9 @@
         <p><%= article.summary %></p>
         <h6><%= article.favorites.count.to_s + " favorites" %>
             <% if current_user.favorite_articles.include?(article) %>
-              <%= link_to "unfavorite", favorites_destroy_path(:favorite => { :article_id => article.id }) %>
+              <%= link_to "unfavorite", favorite_path(:id, favorite: {article_id: article.id}), :method => :delete %>
             <% else %>
-              <%= link_to "favorite", favorites_create_path(:favorite => { :article_id => article.id }) %>
+              <%= link_to "favorite", favorites_path(:favorite => { :article_id => article.id }), :method => :post %>
             <% end %>
         </h6>
         <h6><%= "published " + time_ago_in_words(article.published) + " ago" %><h6>
@@ -17,4 +17,3 @@
     <% end %>
   </div>
 <div>
-<!-- "Favorite", favorite_path, method: :create, data: { favorite: { article_id: article.id }} %> -->
