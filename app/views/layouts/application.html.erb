@@ -7,6 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <!-- sign out / navbar only visible when users are logged in -->
   <% if current_user %>
     <div class="main-body">
       <ul>
@@ -14,10 +15,6 @@
         <li><a href="http://theoutboundrss.herokuapp.com/favorites">Favorites</a></li>
         <li><%= link_to "Log out", session_path, :method => :delete %></li>
       </ul>
-      <!-- <ul class="sign-out">
-        <li><h5 class="sign-out"><%= button_to "sign out", {:controller => :sessions, :action => 'destroy'},
-            :method => :delete %></h5></li>
-      </ul> -->
     </div>
   <% end %>
 
