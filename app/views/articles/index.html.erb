@@ -1,9 +1,20 @@
-<h1> ALL THE ARTICLES </h1>
-
-<% Article.all.each do |article| %>
-  <p>
-    <h4><a href="<%= article.url %>"><%= article.title %></a><h4>
-    <h6><%= article.author %><h6>
-    <h6><%= article.published %><h6>
-  </p>
-<% end %>
+<div class="main-body">
+  <div>
+    <% Article.all.each do |article| %>
+      <div class="article-display">
+        <h4><a href="<%= article.url %>"><%= article.title %></a><h4>
+        <h6><%= "written by: " + article.author %><h6>
+        <p><%= article.summary %></p>
+        <h6><%= article.favorites.count.to_s + " favorites" %>
+            <% if current_user.favorite_articles.include?(article) %>
+              <%= link_to "unfavorite", favorites_destroy_path(:favorite => { :article_id => article.id }) %>
+            <% else %>
+              <%= link_to "favorite", favorites_create_path(:favorite => { :article_id => article.id }) %>
+            <% end %>
+        </h6>
+        <h6><%= "published " + time_ago_in_words(article.published) + " ago" %><h6>
+      </div>
+    <% end %>
+  </div>
+<div>
+<!-- "Favorite", favorite_path, method: :create, data: { favorite: { article_id: article.id }} %> -->

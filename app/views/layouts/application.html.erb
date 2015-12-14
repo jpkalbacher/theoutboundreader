@@ -8,11 +8,17 @@
 </head>
 <body>
   <% if current_user %>
-    <header class="navbar">
-      <p>Welcome back <%= current_user.email %>!</p>
-      <%= button_to "delete", {:controller => :sessions, :action => 'destroy'},
-          :method => :delete %>
-    </header>
+    <div class="main-body">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#news">Favorites</a></li>
+        <li><%= link_to "Log out", session_path, :method => :delete %></li>
+      </ul>
+      <!-- <ul class="sign-out">
+        <li><h5 class="sign-out"><%= button_to "sign out", {:controller => :sessions, :action => 'destroy'},
+            :method => :delete %></h5></li>
+      </ul> -->
+    </div>
   <% end %>
 
   <%= yield %>
