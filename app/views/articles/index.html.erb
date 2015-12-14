@@ -1,6 +1,6 @@
 <div class="main-body">
   <div>
-    <% Article.all.each do |article| %>
+    <% @articles.each do |article| %>
       <div class="article-display">
         <h4><a href="<%= article.url %>"><%= article.title %></a><h4>
         <h6><%= "written by: " + article.author %><h6>
@@ -15,5 +15,8 @@
         <h6><%= "published " + time_ago_in_words(article.published) + " ago" %><h6>
       </div>
     <% end %>
+    <div class="pagination">
+      <%= will_paginate @articles %>
+    </div>
   </div>
 <div>

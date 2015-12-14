@@ -15,5 +15,8 @@
         <h6><%= "published " + time_ago_in_words(article.published) + " ago" %><h6>
       </div>
     <% end %>
+    <div class="pagination">
+      <%= will_paginate @articles %>
+    </div>
   </div>
 <div>

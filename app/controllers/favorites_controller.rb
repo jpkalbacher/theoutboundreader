@@ -8,9 +8,9 @@ class FavoritesController < ApplicationController
   end
 
   def index
-    @articles = current_user.favorite_articles
+    @articles = current_user.favorite_articles.paginate(:page => params[:page], :per_page => 10)
   end
-
+  
   def destroy
     favorite = current_user.favorites.where(article_id: favorite_params[:article_id]).first
     favorite.delete
