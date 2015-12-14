@@ -1,17 +1,21 @@
-<h1>Sign In</h1>
-<div class="new-user">
-  <form action="<%= session_url %>" method="post">
-    <input type="hidden"
-		       name="authenticity_token"
-		       value="<%= form_authenticity_token %>">
-    <label for="email">Email</label>
-    <input type="text"
-           name="user[email]"
-           placeholder="email">
-    <label for="password">Password</label>
-    <input type="password"
-           name="user[password]"
-           placeholder="password">
-		<button type="submit">Submit</button>
-  </form>
+<div class="main-body">
+  <h1>The Outbound Collective (rss)</h1>
+  <h3>Sign In</h3>
+  <div class="new-user">
+    <form action="<%= session_url %>" method="post">
+      <input type="hidden"
+  		       name="authenticity_token"
+  		       value="<%= form_authenticity_token %>">
+      <label for="email">Email</label>
+      <input type="text"
+             name="user[email]"
+             placeholder="email">
+      <label for="password">Password</label>
+      <input type="password"
+             name="user[password]"
+             placeholder="password">
+  		<button type="submit">Submit</button>
+    </form>
+    <p>Not a user? <%= link_to "Sign Up", new_user_path %> </p>
+  </div>
 </div>
